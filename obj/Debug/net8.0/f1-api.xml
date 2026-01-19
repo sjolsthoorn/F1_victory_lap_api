@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>f1-api</name>
+    </assembly>
+    <members>
+        <member name="M:f1_api.Controllers.DriversController.GetAllDrivers(System.Int32,System.Int32)">
+            <summary>
+            Get all drivers from F1 history
+            </summary>
+            <param name="limit">Maximum number of results to return (default: 1000)</param>
+            <param name="offset">Offset for pagination (default: 0)</param>
+            <returns>List of drivers</returns>
+        </member>
+        <member name="M:f1_api.Controllers.DriversController.GetDriversByYear(System.Int32)">
+            <summary>
+            Get drivers for a specific season
+            </summary>
+            <param name="year">The F1 season year</param>
+            <returns>List of drivers for the specified year</returns>
+        </member>
+        <member name="M:f1_api.Controllers.DriversController.GetDriverById(System.String)">
+            <summary>
+            Get a specific driver by ID
+            </summary>
+            <param name="driverId">The driver ID (e.g., 'alonso', 'hamilton')</param>
+            <returns>Driver information</returns>
+        </member>
+        <member name="T:f1_api.Models.Driver">
+            <summary>
+            Represents an F1 driver
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Driver.DriverId">
+            <summary>
+            Unique driver identifier
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Driver.PermanentNumber">
+            <summary>
+            Permanent driver number
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Driver.Code">
+            <summary>
+            Driver code (3-letter abbreviation)
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Driver.Url">
+            <summary>
+            Wikipedia URL for the driver
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Driver.GivenName">
+            <summary>
+            Driver's first name
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Driver.FamilyName">
+            <summary>
+            Driver's last name
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Driver.DateOfBirth">
+            <summary>
+            Driver's date of birth (ISO 8601 format)
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Driver.Nationality">
+            <summary>
+            Driver's nationality
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Driver.ImageUrl">
+            <summary>
+            URL to driver's headshot image (constructed from Formula1.com)
+            </summary>
+        </member>
+    </members>
+</doc>
