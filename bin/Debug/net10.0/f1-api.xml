@@ -26,6 +26,72 @@
             <param name="driverId">The driver ID (e.g., 'alonso', 'hamilton')</param>
             <returns>Driver information</returns>
         </member>
+        <member name="M:f1_api.Controllers.RacesController.GetRacesByYear(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get all races for a specific season
+            </summary>
+            <param name="year">The F1 season year</param>
+            <param name="limit">Maximum number of results to return (default: 1000)</param>
+            <param name="offset">Offset for pagination (default: 0)</param>
+            <returns>List of races for the specified year</returns>
+        </member>
+        <member name="M:f1_api.Controllers.RacesController.GetRaceByYearAndRound(System.Int32,System.Int32)">
+            <summary>
+            Get a specific race by year and round
+            </summary>
+            <param name="year">The F1 season year</param>
+            <param name="round">The race round number</param>
+            <returns>Race information</returns>
+        </member>
+        <member name="M:f1_api.Controllers.ResultsController.GetResultsByYear(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get all race results for a specific season
+            </summary>
+            <param name="year">The F1 season year</param>
+            <param name="limit">Maximum number of results to return (default: 1000)</param>
+            <param name="offset">Offset for pagination (default: 0)</param>
+            <returns>List of race results for the specified year</returns>
+        </member>
+        <member name="M:f1_api.Controllers.ResultsController.GetResultsByYearAndRound(System.Int32,System.Int32)">
+            <summary>
+            Get race results for a specific race
+            </summary>
+            <param name="year">The F1 season year</param>
+            <param name="round">The race round number</param>
+            <returns>List of race results for the specified race</returns>
+        </member>
+        <member name="M:f1_api.Controllers.SeasonsController.GetAllSeasons(System.Int32,System.Int32)">
+            <summary>
+            Get all F1 seasons
+            </summary>
+            <param name="limit">Maximum number of results to return (default: 1000)</param>
+            <param name="offset">Offset for pagination (default: 0)</param>
+            <returns>List of seasons</returns>
+        </member>
+        <member name="M:f1_api.Controllers.StandingsController.GetDriverStandings(System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Get driver championship standings for a specific season
+            </summary>
+            <param name="year">The F1 season year</param>
+            <param name="round">Optional round number to get standings at a specific point in the season</param>
+            <returns>List of driver standings</returns>
+        </member>
+        <member name="M:f1_api.Controllers.StandingsController.GetConstructorStandings(System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Get constructor championship standings for a specific season
+            </summary>
+            <param name="year">The F1 season year</param>
+            <param name="round">Optional round number to get standings at a specific point in the season</param>
+            <returns>List of constructor standings</returns>
+        </member>
+        <member name="M:f1_api.Controllers.StatusController.GetAllStatus(System.Int32,System.Int32)">
+            <summary>
+            Get all finishing status codes
+            </summary>
+            <param name="limit">Maximum number of results to return (default: 1000)</param>
+            <param name="offset">Offset for pagination (default: 0)</param>
+            <returns>List of status codes</returns>
+        </member>
         <member name="T:f1_api.Models.Driver">
             <summary>
             Represents an F1 driver
@@ -74,6 +140,336 @@
         <member name="P:f1_api.Models.Driver.ImageUrl">
             <summary>
             URL to driver's headshot image (constructed from Formula1.com)
+            </summary>
+        </member>
+        <member name="T:f1_api.Models.Race">
+            <summary>
+            Represents an F1 race
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Race.Season">
+            <summary>
+            Season year
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Race.Round">
+            <summary>
+            Round number in the season
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Race.RaceName">
+            <summary>
+            Race name
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Race.Circuit">
+            <summary>
+            Circuit information
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Race.Date">
+            <summary>
+            Race date (ISO 8601 format)
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Race.Time">
+            <summary>
+            Race time (ISO 8601 format)
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Race.Url">
+            <summary>
+            Wikipedia URL for the race
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Race.Results">
+            <summary>
+            Race results (when included in response)
+            </summary>
+        </member>
+        <member name="T:f1_api.Models.Circuit">
+            <summary>
+            Represents an F1 circuit
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Circuit.CircuitId">
+            <summary>
+            Circuit identifier
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Circuit.CircuitName">
+            <summary>
+            Circuit name
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Circuit.Location">
+            <summary>
+            Location information
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Circuit.Url">
+            <summary>
+            Wikipedia URL for the circuit
+            </summary>
+        </member>
+        <member name="T:f1_api.Models.Location">
+            <summary>
+            Represents a circuit location
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Location.Latitude">
+            <summary>
+            Latitude
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Location.Longitude">
+            <summary>
+            Longitude
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Location.Locality">
+            <summary>
+            Locality (city)
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Location.Country">
+            <summary>
+            Country
+            </summary>
+        </member>
+        <member name="T:f1_api.Models.Result">
+            <summary>
+            Represents a race result
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Result.Number">
+            <summary>
+            Race number
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Result.Position">
+            <summary>
+            Final position
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Result.PositionText">
+            <summary>
+            Position text (can include "R" for retired, etc.)
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Result.Points">
+            <summary>
+            Points awarded
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Result.Driver">
+            <summary>
+            Driver information
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Result.Constructor">
+            <summary>
+            Constructor (team) information
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Result.Grid">
+            <summary>
+            Starting grid position
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Result.Laps">
+            <summary>
+            Number of laps completed
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Result.Status">
+            <summary>
+            Finishing status (e.g., "Finished", "Retired")
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Result.FastestLap">
+            <summary>
+            Fastest lap time information
+            </summary>
+        </member>
+        <member name="T:f1_api.Models.Constructor">
+            <summary>
+            Represents an F1 constructor (team)
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Constructor.ConstructorId">
+            <summary>
+            Constructor identifier
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Constructor.Name">
+            <summary>
+            Constructor name
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Constructor.Nationality">
+            <summary>
+            Constructor nationality
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Constructor.Url">
+            <summary>
+            Wikipedia URL for the constructor
+            </summary>
+        </member>
+        <member name="T:f1_api.Models.FastestLap">
+            <summary>
+            Represents fastest lap information
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.FastestLap.Rank">
+            <summary>
+            Lap number
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.FastestLap.Lap">
+            <summary>
+            Lap number
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.FastestLap.Time">
+            <summary>
+            Time information
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.FastestLap.AverageSpeed">
+            <summary>
+            Average speed
+            </summary>
+        </member>
+        <member name="T:f1_api.Models.TimeInfo">
+            <summary>
+            Represents time information
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.TimeInfo.Millis">
+            <summary>
+            Time in milliseconds
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.TimeInfo.Time">
+            <summary>
+            Time as string (e.g., "1:23.456")
+            </summary>
+        </member>
+        <member name="T:f1_api.Models.AverageSpeed">
+            <summary>
+            Represents average speed information
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.AverageSpeed.Units">
+            <summary>
+            Speed units (e.g., "kph")
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.AverageSpeed.Speed">
+            <summary>
+            Speed value
+            </summary>
+        </member>
+        <member name="T:f1_api.Models.Season">
+            <summary>
+            Represents an F1 season
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Season.Year">
+            <summary>
+            Season year
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Season.Url">
+            <summary>
+            Wikipedia URL for the season
+            </summary>
+        </member>
+        <member name="T:f1_api.Models.DriverStanding">
+            <summary>
+            Represents driver championship standings
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.DriverStanding.Position">
+            <summary>
+            Position in championship
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.DriverStanding.PositionText">
+            <summary>
+            Position text
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.DriverStanding.Points">
+            <summary>
+            Points total
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.DriverStanding.Wins">
+            <summary>
+            Number of wins
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.DriverStanding.Driver">
+            <summary>
+            Driver information
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.DriverStanding.Constructors">
+            <summary>
+            Constructor (team) information
+            </summary>
+        </member>
+        <member name="T:f1_api.Models.ConstructorStanding">
+            <summary>
+            Represents constructor championship standings
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.ConstructorStanding.Position">
+            <summary>
+            Position in championship
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.ConstructorStanding.PositionText">
+            <summary>
+            Position text
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.ConstructorStanding.Points">
+            <summary>
+            Points total
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.ConstructorStanding.Wins">
+            <summary>
+            Number of wins
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.ConstructorStanding.Constructor">
+            <summary>
+            Constructor (team) information
+            </summary>
+        </member>
+        <member name="T:f1_api.Models.Status">
+            <summary>
+            Represents a finishing status code
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Status.StatusId">
+            <summary>
+            Status identifier
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Status.Count">
+            <summary>
+            Number of occurrences
+            </summary>
+        </member>
+        <member name="P:f1_api.Models.Status.StatusText">
+            <summary>
+            Status description (e.g., "Finished", "Retired")
             </summary>
         </member>
         <member name="T:Program">
